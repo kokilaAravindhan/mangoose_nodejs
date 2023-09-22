@@ -6,6 +6,7 @@ import connectionToDb from './db/mangoose_connection.js';
 
 var app=express();
 
+const PORT=process.env.DB_PORT || 5050;
 await connectionToDb();
 app.use(express.static('public'));
 app.use(express.json());

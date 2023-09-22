@@ -11,7 +11,7 @@ const mentorRouter=express.Router();
 
 mentorRouter.get('/',async(req,res)=> {
     try {
-        const data = await mentorSchema.find({id:1,name:1,student:1,email:1});
+        const data = await mentorSchema.find({},{id:1,name:1,student:1,email:1});
         res.send(data);
         
       } catch (e) {
@@ -36,12 +36,12 @@ mentorRouter.post('/',async (req,res)=> {
     
 }); 
 
-mentorRouter.get("/:id", async (req, res) => {
+mentorRouter.put("/:id", async (req, res) => {
     console.log("show all students for particular mentor");
+    const { mentId } = req.params;
     try {
-      const ment = await mentorSchema
-        .findById(req.params.id)
-        .populate("studentsAssigned", "name");
+        new mentorSchema(req.body);
+      const ment = await mentorSchema.updateOne({ id: mentId }, { '$set': req.body })
       res.send(ment);
     } catch (e) {
       console.log(e, "error");
