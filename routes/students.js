@@ -6,7 +6,7 @@ const studentRouter=express.Router();
 
 studentRouter.get('/',async(req,res)=> {
     try {
-        const data = await studentSchema.find();
+        const data = await studentSchema.find({id:1,name:1,mentor:1});
         res.send(data);
       } catch (e) {
         console.log(e, "error");

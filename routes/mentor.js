@@ -11,7 +11,7 @@ const mentorRouter=express.Router();
 
 mentorRouter.get('/',async(req,res)=> {
     try {
-        const data = await mentorSchema.find();
+        const data = await mentorSchema.find({id:1,name:1,student:1,email:1});
         res.send(data);
         
       } catch (e) {
@@ -24,13 +24,14 @@ mentorRouter.get('/',async(req,res)=> {
 mentorRouter.post('/',async (req,res)=> {
     console.log("mentor create route");
     try {
-      const data = await mentorSchema({...req.body});
-      const newMentor = await data.save();
-      res.send(newMentor)
+      const data = await mentorSchema(req.body);
+       await data.save();
+      res.send({msg:'the values send'})
       
     } catch (e) {
       console.log(e, "error");
-      res.status(400).send("Error");
+      
+      res.send({msg:'the values not send'})
     }
     
 }); 

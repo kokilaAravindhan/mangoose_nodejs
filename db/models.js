@@ -18,7 +18,7 @@ const model=new mongoose.Schema({
         required:true
     }
 });
-const mentorSchema=mongoose.model('mentor',model)
+const mentorSchema=mongoose.model('mentors',model)
 
 const studmodel=new mongoose.Schema({
     id:{
