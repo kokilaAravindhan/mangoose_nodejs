@@ -1,0 +1,11 @@
+ curl -X POST -H "Content-Type: application/json" -d '{"name":"qqqq","students":23,"email":"qqq@fmail.xom"}' http://localhost:5050/mentor/todos/all
+    
+const connectionToDb=async()=>{
+    try{
+    const conn=mongoose.connect('mongodb://localhost:27017/mangosse',{useNewUrlParser: true, useUnifiedTopology: true});
+    console.log("DB successfully connected");
+}catch(err){
+    console.log(err);
+    process.exit(1);
+}
+}
